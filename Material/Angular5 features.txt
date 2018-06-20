@@ -1,0 +1,76 @@
+Angular5 Features:
+1.Next version of angular4
+
+2.AOT (Ahead of Time )Compiler made as default
+
+3.Type checking even in templates
+<input type="number">
+
+4.More Flexible metadata and error messages got improved
+
+5.Hybrid upgrade applications
+@angular/core @latest
+
+6.Build Optimizer
+A build optimiser which removed unnecessary code from applications.
+-It is tool which is included in CLI.
+benefits:
+- Remove addtional parts like spaces in components
+- While runtime it remove decorators so that our final application size will be reduced 
+
+7.Share application state between Serverside to client side 
+
+8.Preserve white space 
+@component{
+selector:
+	preserveWhiteSpace:false;
+}
+
+9.i18N -Number date currency pipes
+
+10.HttpCLient is smaller and easier
+To update to HttpClient, you’ll need to replace HttpModule with HttpClientModule from @angular/common/http in each of your modules, inject the HttpClient service, and remove any map(res => res.json()) calls, which are no longer needed.
+
+11.New Router Lifeevents
+Ex: you can create progress displays that display when a route is changed.The corresponding events are ActivationStart and ActivationEnd or ChildActivationStart and ChildActivationEnd.
+router.events
+    // Event = RouteEvent | RouterEvent
+    .filter(e => e instanceof RouteEvent)
+    .subscribe(e => {
+        if (e instanceof ActivationStart) {
+            spinner.start();
+        } else if (e instanceof ActivationEnd) {
+            spinner.end()
+        }
+    });
+12.cli V1.5
+
+13.RXJS v5.5
+	import {map,filter} from 'rxjs/operators';
+
+14.angular Forms added Update will be happen onBlur /OnSubmit
+before:
+<input type="text" name="fname" ngModel>
+after:
+<input name="fname" ngModel.[ngModelOptions]="{UpdateOn:'blur'}"/>
+
+<form [ngFormOptions]={'updateOn':'blur'}
+
+15.Reactive Forms
+In reactive forms, the updateOn property is passed on in the parameter object when the FormControl is instantiated.
+
+this.email = new FormControl(null, { updateOn: 'blur' });
+If the validators are also specified, they are specified as properties of the parameter object:
+
+this.email = new FormControl(null, {
+  validators: Validators.required,
+  updateOn: 'blur'
+});
+16.Replace the ReflectiveInjector with StaticInjector
+Before
+
+ReflectiveInjector.resolveAndCreate(providers);
+
+After
+
+Injector.create(providers);
